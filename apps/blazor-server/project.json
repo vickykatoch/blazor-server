@@ -1,0 +1,53 @@
+{
+  "name": "blazor-server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/blazor-server/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/blazor-server",
+        "main": "apps/blazor-server/src/main.ts",
+        "tsConfig": "apps/blazor-server/tsconfig.app.json",
+        "assets": ["apps/blazor-server/src/assets"],
+        "webpackConfig": "apps/blazor-server/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "blazor-server:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "blazor-server:build:development"
+        },
+        "production": {
+          "buildTarget": "blazor-server:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/blazor-server/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
