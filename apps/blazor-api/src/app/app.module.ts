@@ -3,6 +3,7 @@ import { AuthModule } from './auth';
 import { PrismaModule } from './prisma';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user';
+import { BookmarkModule } from './bookmark';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { UserModule } from './user';
       envFilePath: '../../../../.env',
     }),
     UserModule,
+    BookmarkModule,
   ],
   controllers: [],
   providers: [],

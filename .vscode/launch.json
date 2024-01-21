@@ -2,9 +2,9 @@
   "configurations": [
     {
       "type": "chrome",
-      "name": "ws://localhost:9229/b876b545-6d0d-46db-b6f9-25ce64477b6b",
+      "name": "DEBUG",
       "request": "launch",
-      "url": "ws://localhost:9229/b876b545-6d0d-46db-b6f9-25ce64477b6b"
+      "url": "ws://localhost:9229/39efe181-5af0-41d0-8e5a-3b8601b7f11c"
     }
   ]
 }
