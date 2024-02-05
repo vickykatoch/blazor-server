@@ -39,3 +39,33 @@ model Bookmark {
 
   @@map("bookmarks")
 }
+
+model AmpsConnection {
+  name        String  @id
+  description String?
+  url         String
+
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+  connectionTimeout  Int?
+  connectionAttempts Int?
+  keepAlive          Boolean?
+  AmpsQuery          AmpsQuery[]
+
+  @@map("amps_connections")
+}
+
+model AmpsQuery {
+  id          Int     @id @default(autoincrement())
+  commandType String
+  filter      String
+  options     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  connectionName String
+  connection     AmpsConnection @relation(fields: [connectionName], references: [name])
+
+  @@map("amps_queries")
+}

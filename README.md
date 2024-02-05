@@ -64,5 +64,6 @@ yarn create nx-workspace blazor-server --preset=nest
 yarn add -D @nx/nest
 yarn nx g @nx/nest:application --name=blazor-server --directory=apps/blazor-server --projectNameAndRootFormat=as-provided
 
+npx prisma generate
 npx prism migrate dev
 npx prisma studio
