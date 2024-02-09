@@ -6,7 +6,9 @@ import {
   Param,
   Patch,
   Post,
+  Logger,
 } from '@nestjs/common';
+
 import { AmpsConnectionInfoService } from '../services';
 import {
   AmpsConnectionInfo,
@@ -22,6 +24,7 @@ export class AmpsConInfoController {
   createConnectionInfo(
     @Body() dto: NewAmpsConnectionInfoDto
   ): Promise<AmpsConnectionInfo> {
+    Logger.log('POST request received', 'AmpsConInfoController');
     return this.conInfoService.createConnectionInfo(dto);
   }
 

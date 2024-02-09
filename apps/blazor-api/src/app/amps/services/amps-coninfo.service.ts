@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ForbiddenException, Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '../../prisma';
 import {
   AmpsConnectionInfo,
@@ -13,17 +13,22 @@ const mapConInfo = (res) =>
 
 @Injectable()
 export class AmpsConnectionInfoService {
+  private readonly logger = new Logger(AmpsConnectionInfoService.name);
+
   constructor(private prisma: PrismaService) {}
 
   createConnectionInfo(
     dto: NewAmpsConnectionInfoDto
   ): Promise<AmpsConnectionInfo> {
+    this.logger.log(
+      'New amps connection creation request received',
+      JSON.stringify(dto)
+    );
     return this.prisma.ampsConnection
       .create({
         data: {
           name: dto.name,
           url: dto.url.join(','),
-          description: dto.description,
           connectionTimeout: dto.connectionTimeout || 5000,
           reconnectAttempts: dto.reconnectAttempts || 5,
           keepAlive: dto.keepAlive ?? false,

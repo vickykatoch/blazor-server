@@ -1,0 +1,5 @@
+{
+  "terminal.integrated.env.linux": {
+    "PRE_NAMESPACE_PWD": "${cwd}"
+  }
+}

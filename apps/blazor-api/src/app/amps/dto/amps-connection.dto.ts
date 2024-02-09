@@ -11,18 +11,19 @@ export class NewAmpsConnectionInfoDto {
   @IsString()
   @IsNotEmpty()
   name: string;
+
   @IsArray()
   @IsNotEmpty()
   url: string[];
-  @IsString()
-  @IsOptional()
-  description?: string;
+
   @IsNumber()
   @IsOptional()
   connectionTimeout?: number;
+
   @IsNumber()
   @IsOptional()
   reconnectAttempts?: number;
+
   @IsBoolean()
   @IsOptional()
   keepAlive?: boolean;
@@ -35,10 +36,6 @@ export class EditAmpsConnectionInfoDto {
   @IsArray()
   @IsOptional()
   url?: string[];
-
-  @IsString()
-  @IsOptional()
-  description?: string;
 
   @IsNumber()
   @IsOptional()
@@ -55,7 +52,6 @@ export class EditAmpsConnectionInfoDto {
 export class AmpsConnectionInfo {
   name: string;
   url: string[];
-  description?: string;
   connectionTimeout: number;
   reconnectAttempts: number;
   keepAlive: boolean;
